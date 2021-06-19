@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity RegistroVacinacao.
+    -->
+    <changeSet id="20210619163228-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="pessoa_id"
+                                 baseTableName="registro_vacinacao"
+                                 constraintName="fk_registro_vacinacao__pessoa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pessoa"/>
+
+        <addForeignKeyConstraint baseColumnNames="vacina_id"
+                                 baseTableName="registro_vacinacao"
+                                 constraintName="fk_registro_vacinacao__vacina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vacina"/>
+
+        <addForeignKeyConstraint baseColumnNames="fabricante_id"
+                                 baseTableName="registro_vacinacao"
+                                 constraintName="fk_registro_vacinacao__fabricante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fabricante"/>
+    </changeSet>
+</databaseChangeLog>

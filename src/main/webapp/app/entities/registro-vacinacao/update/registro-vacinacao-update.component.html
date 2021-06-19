@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-registro-vacinacao-heading" data-cy="RegistroVacinacaoCreateUpdateHeading">Create or edit a Registro Vacinacao</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dia">Dia</label>
+          <div class="input-group">
+            <input
+              id="field_dia"
+              data-cy="dia"
+              type="text"
+              class="form-control"
+              name="dia"
+              ngbDatepicker
+              #diaDp="ngbDatepicker"
+              formControlName="dia"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="diaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cns">Cns</label>
+          <input type="text" class="form-control" name="cns" id="field_cns" data-cy="cns" formControlName="cns" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_enfermeiro">Enfermeiro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="enfermeiro"
+            id="field_enfermeiro"
+            data-cy="enfermeiro"
+            formControlName="enfermeiro"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pessoa">Pessoa</label>
+          <select class="form-control" id="field_pessoa" data-cy="pessoa" name="pessoa" formControlName="pessoa">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pessoaOption.id === editForm.get('pessoa')!.value?.id ? editForm.get('pessoa')!.value : pessoaOption"
+              *ngFor="let pessoaOption of pessoasSharedCollection; trackBy: trackPessoaById"
+            >
+              {{ pessoaOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vacina">Vacina</label>
+          <select class="form-control" id="field_vacina" data-cy="vacina" name="vacina" formControlName="vacina">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="vacinaOption.id === editForm.get('vacina')!.value?.id ? editForm.get('vacina')!.value : vacinaOption"
+              *ngFor="let vacinaOption of vacinasSharedCollection; trackBy: trackVacinaById"
+            >
+              {{ vacinaOption.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fabricante">Fabricante</label>
+          <select class="form-control" id="field_fabricante" data-cy="fabricante" name="fabricante" formControlName="fabricante">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                fabricanteOption.id === editForm.get('fabricante')!.value?.id ? editForm.get('fabricante')!.value : fabricanteOption
+              "
+              *ngFor="let fabricanteOption of fabricantesSharedCollection; trackBy: trackFabricanteById"
+            >
+              {{ fabricanteOption.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

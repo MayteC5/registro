@@ -1,0 +1,33 @@
+{
+  "name": "Fabricante",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "criado",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "vacina",
+      "otherEntityRelationshipName": "fbricantes",
+      "relationshipName": "vacinas",
+      "otherEntityField": "nome",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "fabricante",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210619163225"
+}

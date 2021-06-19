@@ -1,0 +1,76 @@
+<div>
+  <h2 id="page-heading" data-cy="VacinaHeading">
+    <span>Vacinas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vacina"
+        [routerLink]="['/vacina/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Vacina </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vacinas?.length === 0">
+    <span>No vacinas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vacinas && vacinas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Nome</span></th>
+          <th scope="col"><span>Criada</span></th>
+          <th scope="col"><span>Doenca</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vacina of vacinas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vacina', vacina.id, 'view']">{{ vacina.id }}</a>
+          </td>
+          <td>{{ vacina.nome }}</td>
+          <td>{{ vacina.criada | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="vacina.doenca">
+              <a [routerLink]="['/doenca', vacina.doenca?.id, 'view']">{{ vacina.doenca?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/vacina', vacina.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/vacina', vacina.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vacina)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

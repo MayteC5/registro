@@ -1,0 +1,56 @@
+
+
+
+entity Fabricante{ 
+	nome String 
+    criado ZonedDateTime
+}
+enum Alergia{
+	ALERGICA
+    NAO ALERGICA
+}
+
+entity Pessoa{
+    nome String
+    datanascimento LocalDate
+    alergia Alergia
+}
+
+entity Vacina{
+    nome String 
+    criada ZonedDateTime
+}
+
+entity RegistroVacinacao{
+    dia LocalDate
+    cns String
+    enfermeiro String
+}
+
+entity Doenca{
+    nome String
+    primeirocaso LocalDate
+}
+
+relationship ManyToOne{
+    RegistroVacinacao{pessoa(nome)} to Pessoa
+    RegistroVacinacao{vacina(nome)} to Vacina
+    RegistroVacinacao{fabricante(nome)} to Fabricante
+    Vacina{doenca(nome)} to Doenca
+}
+
+relationship ManyToMany{
+    Fabricante{vacinas(nome)} to Vacina{fbricantes(nome)} 
+}
+
+
+
+
+
+
+
+
+
+
+
+
