@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="RegistroVacinacaoHeading">
+    <span>Registro Vacinacaos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-registro-vacinacao"
+        [routerLink]="['/registro-vacinacao/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Registro Vacinacao </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="registroVacinacaos?.length === 0">
+    <span>No registroVacinacaos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="registroVacinacaos && registroVacinacaos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Dia</span></th>
+          <th scope="col"><span>Cns</span></th>
+          <th scope="col"><span>Enfermeiro</span></th>
+          <th scope="col"><span>Pessoa</span></th>
+          <th scope="col"><span>Vacina</span></th>
+          <th scope="col"><span>Fabricante</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registroVacinacao of registroVacinacaos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/registro-vacinacao', registroVacinacao.id, 'view']">{{ registroVacinacao.id }}</a>
+          </td>
+          <td>{{ registroVacinacao.dia | formatMediumDate }}</td>
+          <td>{{ registroVacinacao.cns }}</td>
+          <td>{{ registroVacinacao.enfermeiro }}</td>
+          <td>
+            <div *ngIf="registroVacinacao.pessoa">
+              <a [routerLink]="['/pessoa', registroVacinacao.pessoa?.id, 'view']">{{ registroVacinacao.pessoa?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="registroVacinacao.vacina">
+              <a [routerLink]="['/vacina', registroVacinacao.vacina?.id, 'view']">{{ registroVacinacao.vacina?.nome }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="registroVacinacao.fabricante">
+              <a [routerLink]="['/fabricante', registroVacinacao.fabricante?.id, 'view']">{{ registroVacinacao.fabricante?.nome }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/registro-vacinacao', registroVacinacao.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/registro-vacinacao', registroVacinacao.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(registroVacinacao)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

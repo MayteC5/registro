@@ -1,0 +1,29 @@
+{
+  "name": "Pessoa",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datanascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "alergia",
+      "fieldType": "Alergia",
+      "fieldValues": "ALERGICA,NAO"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "pessoa",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210619163226"
+}

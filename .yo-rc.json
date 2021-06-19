@@ -42,7 +42,9 @@
     "jwtSecretKey": "ZTI2NWEyYjM1ZTY4ZTJlZDE1N2QyYzYxYjQ2ODNhZDlkYTI4Y2Y3MmU5NTAwZWU1MDNkMTdhN2Q2OTVhMTU1YzU2NWEzNGEwYjNlZmU0NTM1YzA0NGYyMTUxMDJmNjZjYmFmZmE5MWNiNDViODdlZmI5MWQ0Yjk0OGRmYTNkNDI=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Fabricante", "Pessoa", "Vacina", "RegistroVacinacao", "Doenca"],
+    "lastLiquibaseTimestamp": 1624120349000
   },
   "git-provider": "GitHub",
   "git-company": "MayteC5",

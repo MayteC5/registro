@@ -1,0 +1,50 @@
+{
+  "name": "RegistroVacinacao",
+  "fields": [
+    {
+      "fieldName": "dia",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "cns",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enfermeiro",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pessoa",
+      "otherEntityRelationshipName": "registroVacinacao",
+      "relationshipName": "pessoa",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vacina",
+      "otherEntityRelationshipName": "registroVacinacao",
+      "relationshipName": "vacina",
+      "otherEntityField": "nome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fabricante",
+      "otherEntityRelationshipName": "registroVacinacao",
+      "relationshipName": "fabricante",
+      "otherEntityField": "nome"
+    }
+  ],
+  "entityTableName": "registro_vacinacao",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210619163228"
+}

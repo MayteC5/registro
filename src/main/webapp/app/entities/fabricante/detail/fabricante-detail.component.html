@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fabricante">
+      <h2 data-cy="fabricanteDetailsHeading"><span>Fabricante</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ fabricante.id }}</span>
+        </dd>
+        <dt><span>Nome</span></dt>
+        <dd>
+          <span>{{ fabricante.nome }}</span>
+        </dd>
+        <dt><span>Criado</span></dt>
+        <dd>
+          <span>{{ fabricante.criado | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Vacinas</span></dt>
+        <dd>
+          <span *ngFor="let vacinas of fabricante.vacinas; let last = last">
+            <a [routerLink]="['/vacina', vacinas?.id, 'view']">{{ vacinas.nome }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fabricante', fabricante.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
