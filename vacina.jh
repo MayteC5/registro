@@ -7,7 +7,7 @@ entity Fabricante{
 }
 enum Alergia{
 	ALERGICA
-    NAO ALERGICA
+    NAO_ALERGICA
 }
 
 entity Pessoa{

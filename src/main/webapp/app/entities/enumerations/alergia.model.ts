@@ -1,5 +1,5 @@
 export enum Alergia {
   ALERGICA = 'ALERGICA',
 
-  NAO = 'NAO',
+  NAO_ALERGICA = 'NAO_ALERGICA',
 }
