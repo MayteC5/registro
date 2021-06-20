@@ -5,5 +5,5 @@ package br.com.vacinacao.domain.enumeration;
  */
 public enum Alergia {
     ALERGICA,
-    NAO,
+    NAO_ALERGICA,
 }

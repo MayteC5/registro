@@ -39,7 +39,7 @@ class PessoaResourceIT {
     private static final LocalDate UPDATED_DATANASCIMENTO = LocalDate.now(ZoneId.systemDefault());
 
     private static final Alergia DEFAULT_ALERGIA = Alergia.ALERGICA;
-    private static final Alergia UPDATED_ALERGIA = Alergia.NAO;
+    private static final Alergia UPDATED_ALERGIA = Alergia.NAO_ALERGICA;
 
     private static final String ENTITY_API_URL = "/api/pessoas";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";

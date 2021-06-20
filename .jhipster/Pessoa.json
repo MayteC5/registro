@@ -12,7 +12,7 @@
     {
       "fieldName": "alergia",
       "fieldType": "Alergia",
-      "fieldValues": "ALERGICA,NAO"
+      "fieldValues": "ALERGICA,NAO_ALERGICA"
     }
   ],
   "relationships": [],
